@@ -17,7 +17,7 @@ Close Browsers
     Close All Browsers
 
 *** Test Cases ***
-Selenium hub Headless Chrome - Create Webdriver
+Selenium hub Chrome - Create Webdriver
     &{options} =	Create Dictionary	browserName=chrome	platform=ANY
 
     Create Webdriver    Remote   command_executor=${HUB}    desired_capabilities=${options}
@@ -27,7 +27,7 @@ Selenium hub Headless Chrome - Create Webdriver
     Title Should Be         Google
     Capture Page Screenshot
 
-Selenium hub Headless Chrome - Open Browser
+Selenium hub Chrome - Open Browser
     &{options} =	Create Dictionary	browserName=chrome	platform=ANY
 
     Open Browser    ${PAGE_URL}    browser=chrome    remote_url=${HUB}     desired_capabilities=${options}
@@ -36,7 +36,7 @@ Selenium hub Headless Chrome - Open Browser
     Title Should Be         Google
     Capture Page Screenshot
 
-Selenium hub Headless Firefox - Create Webdriver
+Selenium hub Firefox - Create Webdriver
     &{options} =	Create Dictionary	browserName=firefox  platform=ANY
 
     Create Webdriver    Remote   command_executor=${HUB}    desired_capabilities=${options}
@@ -46,7 +46,7 @@ Selenium hub Headless Firefox - Create Webdriver
     Title Should Be         Google
     Capture Page Screenshot
 
-Selenium hub Headless Firefox - Open Browser
+Selenium hub Firefox - Open Browser
     &{options} =	Create Dictionary	browserName=firefox  platform=ANY
 
     Open Browser    ${PAGE_URL}    browser=firefox    remote_url=${HUB}     desired_capabilities=${options}
