@@ -11,9 +11,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - cd tests/
-  - docker-compose --no-ansi up -d
-  - docker-compose --no-ansi ps
+  - docker-compose -f tests/docker-compose.yml --no-ansi up -d
+  - docker-compose -f tests/docker-compose.yml --no-ansi ps
 install:
   - pip install -r requirements.txt
   - pip install -r tests/tests-requirements.txt
