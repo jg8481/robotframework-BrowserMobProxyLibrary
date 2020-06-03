@@ -13,9 +13,10 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose -f tests/docker-compose.yml --no-ansi up -d
   - docker-compose -f tests/docker-compose.yml --no-ansi ps
+  - PROXY_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tests_browsermobproxy_1)
 install:
   - pip install -r requirements.txt
   - pip install -r tests/tests-requirements.txt
   - pip install .
 script:
-  - robot -x xunit.xml tests
+  - robot -x xunit.xml -v PROXY_HOST:$PROXY_HOST tests
