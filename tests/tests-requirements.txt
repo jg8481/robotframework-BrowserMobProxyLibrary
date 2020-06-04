@@ -1,0 +1,3 @@
+robotframework >= 2.6.0
+robotframework-selenium2library
+browsermob-proxy >= 0.7.1

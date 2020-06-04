@@ -4,21 +4,27 @@ import sys
 from os.path import join, dirname
 from setuptools import setup
 
-sys.path.append(join(dirname(__file__), 'src'))
 
-execfile(join(dirname(__file__), 'src', 'BrowserMobProxyLibrary', 'version.py'))
+CURDIR = dirname(__file__)
+with open(join(CURDIR, 'requirements.txt')) as f:
+    REQUIREMENTS = f.read().splitlines()
 
-DESCRIPTION = """
-BrowserMobProxyLibrary is a Robot Framework library ro interface with BrowserMob Proxy.
-BrowserMob Proxy is a simple utility to capture performance data for web apps (via the HAR format),
-as well as manipulate browser behavior and traffic, such as whitelisting and blacklisting content,
-simulating network traffic and latency, and rewriting HTTP requests and responses.
-"""
+sys.path.append(join(CURDIR, 'src'))
+
+filename = join(CURDIR, 'src', 'BrowserMobProxyLibrary', 'version.py')
+if sys.version_info.major >= 3:
+    exec(compile(open(filename).read(), filename, 'exec'))
+else:
+    execfile(filename)
+
+with open(join(CURDIR, 'README.md')) as f:
+    DESCRIPTION = f.read()
 
 setup(name         = 'robotframework-browsermobproxylibrary',
       version      = VERSION,
       description  = 'BrowserMob Proxy library for Robot Framework',
       long_description = DESCRIPTION,
+      long_description_content_type='text/x-rst',
       author       = 'Marcin Mierzejewski',
       author_email = '<mmierz@gmail.com>',
       url          = 'https://github.com/s4int/robotframework-BrowserMobProxyLibrary',
@@ -30,12 +36,13 @@ setup(name         = 'robotframework-browsermobproxylibrary',
           "License :: OSI Approved :: Apache Software License",
           "Operating System :: OS Independent",
           "Programming Language :: Python",
-          "Topic :: Software Development :: Testing"
+          "Topic :: Software Development :: Testing",
+          'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.6',
       ],
-      install_requires = [
-          'robotframework >= 2.6.0',
-          'browsermob-proxy >= 0.7.1',
-      ],
+      install_requires = REQUIREMENTS,
       package_dir = {'': 'src'},
       packages    = ['BrowserMobProxyLibrary'],
       )

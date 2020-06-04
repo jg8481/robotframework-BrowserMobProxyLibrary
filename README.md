@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/s4int/robotframework-BrowserMobProxyLibrary.svg?branch=master)](https://travis-ci.org/s4int/robotframework-BrowserMobProxyLibrary)
+[![Build Status](https://img.shields.io/pypi/v/robotframework-browsermobproxylibrary.svg?label=version)](https://pypi.python.org/pypi/robotframework-browsermobproxylibrary)
+
 # Robot Framework BrowserMob Proxy
 ## Introduction
 BrowserMobProxyLibrary is a [Robot Framework](http://robotframework.org/) library ro interface with [BrowserMob Proxy](https://bmp.lightbody.net/).

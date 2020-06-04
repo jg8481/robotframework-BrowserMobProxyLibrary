@@ -1,7 +1,7 @@
 from browsermobproxy import Server
 from browsermobproxy import RemoteServer
 import json
-from version import VERSION
+from .version import VERSION
 
 __version__ = VERSION
 

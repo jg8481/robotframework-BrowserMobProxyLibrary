@@ -1,0 +1,38 @@
+version: '2'
+services:
+  seleniumhub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+
+  browsermobproxy:
+    image: bwowk/browsermob-proxy
+    ports:
+      - 8080:8080
+      - "8081-8200:8081-8200"
+
+  firefoxnode:
+    image: selenium/node-firefox
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - seleniumhub
+      - browsermobproxy
+    environment:
+      HUB_HOST: hub
+    links:
+      - seleniumhub:hub
+      - browsermobproxy:proxy
+
+  chromenode:
+    image: selenium/node-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - seleniumhub
+      - browsermobproxy
+    environment:
+      HUB_HOST: hub
+    links:
+      - seleniumhub:hub
+      - browsermobproxy:proxy
